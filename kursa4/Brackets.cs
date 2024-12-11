@@ -8,19 +8,18 @@ namespace kursa4
 {
     internal class Brackets :FormulaElement
     {
-        public Brackets(NewFormula form):base(form) { }
+        string bracket;
+        public Brackets(NewFormula form,string Bracket) : base(form)
+        {
+            bracket = Bracket;
+        }
         public override void Draw(object sender, buttonEventArgs e)
         {
-            var right = e.el[^1].ToString();
-            e.el.RemoveAt(e.el.Count - 1);
-            var op = e.el[^1].ToString();
-            e.el.RemoveAt(e.el.Count - 1);
-            var left = e.el[^1].ToString();
-            e.el.RemoveAt(e.el.Count - 1);
             e.el.Add(new TextElement("("));
-            e.el.Add(new TextElement(left));
-            e.el.Add(new TextElement(op));
-            e.el.Add(new TextElement(right));
+            foreach(char c in bracket)
+            {
+                e.el.Add(new TextElement(c.ToString()));
+            }
             e.el.Add(new TextElement(")"));
         }
     }

@@ -12,18 +12,13 @@ namespace kursa4
         {
             get;
         }
-        public Graphics g
-        {
-            get;
-        }
         public List<IFormulaElement> el
         {
             get;set;
         }
-        public buttonEventArgs(int buttonind, Graphics g, List<IFormulaElement> element)
+        public buttonEventArgs(int buttonind, List<IFormulaElement> element)
         {
             buttonInd = buttonind;
-            g = g;
             el = element;
         }
     }

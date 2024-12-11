@@ -10,17 +10,14 @@ namespace kursa4
         {
             InitializeComponent();
         }
-        bool flag = false;
         private void AddOperationButton_Click(object sender, EventArgs e)
         {
+            BracketsForm form = new BracketsForm();
+            form.ShowDialog();
             Button clickedButton = sender as Button;
             string ind = clickedButton.Name[^1].ToString();
-            //NewFormula form = new NewFormula(ind, elements);
-            //form.Chance();
-            textBox1.Clear();
-            flag = true;
-            //textBox1.Text = string.Join("", elements.Select(e => e.ToString()));
-            flag = false;
+            NewFormula formula = new NewFormula(ind, elements, form.brackets());
+            formula.Chance();
             panel1.Invalidate();
         }
 
@@ -37,35 +34,29 @@ namespace kursa4
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (!flag)
-            {
-                if (!string.IsNullOrEmpty(textBox1.Text))
-                {
-                    elements.Clear();
-                    foreach (char c in textBox1.Text)
-                    {
-                        elements.Add(new TextElement(c.ToString()));
-                    }
-                    panel1.Invalidate();
-                }
-            }
-            else
-                return;
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FractionForm form = new FractionForm();
             form.ShowDialog();
-            string up = form.num();
-            string down = form.denum();
-            NewFormula formula = new NewFormula("2", elements, form.num(),form.denum());
+            NewFormula formula = new NewFormula("2", elements, form.num(), form.denum());
             formula.Chance();
-            flag = true;
-            textBox1.Text += $"({up})/({down})";
-            flag = false;
+            panel1.Invalidate();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (char c in textBox1.Text)
+            {
+                elements.Add(new TextElement(c.ToString()));
+            }
+            panel1.Invalidate();
+            textBox1.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            elements.RemoveAt(elements.Count-1);
             panel1.Invalidate();
         }
     }

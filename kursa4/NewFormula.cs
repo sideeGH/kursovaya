@@ -17,23 +17,17 @@ namespace kursa4
         public string up, down;
         public event buttonEventHandler buttonEvent;
         List<IFormulaElement> el;
-        Graphics g;
         public NewFormula(string buttonInd, List<IFormulaElement> element,string up,string down)
         {
             el= element;
-            switch(buttonInd)
-            {
-                case "1":
-                    brack = new Brackets(this);
-                    brack.On();
-                    break;
-                case "2":
-                    fr = new Fraction(this, up,down);
-                    fr.On();
-                    break;
-                default:
-                    break;
-            }
+            fr = new Fraction(this, up,down);
+            fr.On();
+        }
+        public NewFormula(string buttonInd, List<IFormulaElement> element, string bracket)
+        {
+            el = element;
+            brack = new Brackets(this, bracket);
+            brack.On();
         }
         protected virtual void Onformula(buttonEventArgs e)
         {
@@ -44,9 +38,8 @@ namespace kursa4
         }
         public void Chance()
         {
-            buttonEventArgs e = new buttonEventArgs(buttonInd, g,el);
+            buttonEventArgs e = new buttonEventArgs(buttonInd,el);
             Onformula(e);
-            el.Add(fr);
         }
     }
 }

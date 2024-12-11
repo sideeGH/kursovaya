@@ -11,24 +11,24 @@ namespace kursa4
         public string Numerator { get; set; }
         public SizeF u, d;
         float length;
+        NewFormula forma;
 
         public string Denominator { get; set; }
         public Fraction(NewFormula form, string up,string down) : base(form) 
         {
+            forma = form;
             Numerator = up;
             Denominator = down;
         }
         public override void Draw(object sender, buttonEventArgs e)
         {
-            //if (e.gr != null)
-            //{
-                //u = e.gr.MeasureString(Numerator, SystemFonts.DefaultFont);
-                //d = e.gr.MeasureString(Denominator, SystemFonts.DefaultFont);
-                //length = Math.Max(u.Width, d.Width);
-            //}
+            e.el.Add(new Fraction(forma, Numerator,Denominator));
         }
         public void Paint(Graphics g, ref int x, int y)
         {
+            u = g.MeasureString(Numerator, SystemFonts.DefaultFont);
+            d = g.MeasureString(Denominator, SystemFonts.DefaultFont);
+            length = Math.Max(u.Width, d.Width);
             float numx = x + (length - u.Width) / 2;
             float denomx = x + (length - d.Width) / 2;
             g.DrawString(Numerator.ToString(), SystemFonts.DefaultFont, Brushes.Black, numx+2, y-10);
