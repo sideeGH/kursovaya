@@ -8,7 +8,7 @@ namespace kursa4
 {
     internal interface IFormulaElement
     {
-        void Paint(Graphics g, ref int x, int y);
+        void Paint(Graphics g, ref float x, float y);
 
     }
 }

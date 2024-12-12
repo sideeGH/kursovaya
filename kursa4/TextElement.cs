@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace kursa4
 {
@@ -13,10 +14,10 @@ namespace kursa4
         {
             text = value;
         }
-        public void Paint(Graphics g, ref int x, int y)
+        public void Paint(Graphics g, ref float x, float y)
         {
             g.DrawString(text.ToString(), SystemFonts.DefaultFont, Brushes.Black, x, y);
-                x += 5;
+                x += 6;
         }
         public override string ToString()
         {

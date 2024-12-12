@@ -24,7 +24,7 @@ namespace kursa4
         {
             e.el.Add(new Fraction(forma, Numerator,Denominator));
         }
-        public void Paint(Graphics g, ref int x, int y)
+        public void Paint(Graphics g, ref float x, float y)
         {
             u = g.MeasureString(Numerator, SystemFonts.DefaultFont);
             d = g.MeasureString(Denominator, SystemFonts.DefaultFont);
@@ -34,6 +34,7 @@ namespace kursa4
             g.DrawString(Numerator.ToString(), SystemFonts.DefaultFont, Brushes.Black, numx+2, y-10);
             g.DrawLine(Pens.Black, x+5, y+6, x+length, y+6);
             g.DrawString(Denominator.ToString(), SystemFonts.DefaultFont, Brushes.Black, denomx+3, y+10);
+            x += length + 2;
         }
     }
 }

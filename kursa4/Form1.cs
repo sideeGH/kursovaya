@@ -23,7 +23,7 @@ namespace kursa4
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
-            int x = 10, y = 50;
+            float x = 10, y = 50;
             foreach (var element in elements)
             {
                 element.Paint(e.Graphics, ref x, y);
