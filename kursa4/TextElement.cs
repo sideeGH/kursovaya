@@ -19,10 +19,10 @@ namespace kursa4
             g.DrawString(text.ToString(), SystemFonts.DefaultFont, Brushes.Black, x, y);
                 x += 6;
         }
-        public override string ToString()
-        {
-                return text.ToString();
-        }
+        //public override string ToString()
+        //{
+                //return text.ToString();
+        //}
 
     }
 }

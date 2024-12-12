@@ -16,7 +16,7 @@ namespace kursa4
             form.ShowDialog();
             Button clickedButton = sender as Button;
             string ind = clickedButton.Name[^1].ToString();
-            NewFormula formula = new NewFormula(ind, elements, form.brackets());
+            NewFormula formula = new NewFormula("1", elements, "1", "1", form.brackets());
             formula.Chance();
             panel1.Invalidate();
         }
@@ -39,7 +39,7 @@ namespace kursa4
         {
             FractionForm form = new FractionForm();
             form.ShowDialog();
-            NewFormula formula = new NewFormula("2", elements, form.num(), form.denum());
+            NewFormula formula = new NewFormula("2", elements, form.num(), form.denum(), "1");
             formula.Chance();
             panel1.Invalidate();
         }
@@ -56,7 +56,26 @@ namespace kursa4
 
         private void button4_Click(object sender, EventArgs e)
         {
-            elements.RemoveAt(elements.Count-1);
+            elements.RemoveAt(elements.Count - 1);
+            panel1.Invalidate();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            string ind = clickedButton.Name[^1].ToString();
+            if (ind == "5")
+                elements.Add(new TextElement("("));
+            else if (ind == "6")
+                elements.Add(new TextElement(")"));
+            else if (ind == "3")
+                elements.Add(new TextElement("+"));
+            else if (ind == "4")
+                elements.Add(new TextElement("/"));
+            else if (ind == "1")
+                elements.Add(new TextElement("-"));
+            else if (ind == "2")
+                elements.Add(new TextElement("*"));
             panel1.Invalidate();
         }
     }
