@@ -44,6 +44,7 @@
             button12 = new Button();
             button13 = new Button();
             button14 = new Button();
+            button15 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -70,7 +71,7 @@
             button1.TabIndex = 2;
             button1.Text = "Скобки";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += AddOperationButton_Click;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -130,6 +131,7 @@
             button7.TabIndex = 8;
             button7.Text = "Сложение";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -139,6 +141,7 @@
             button8.TabIndex = 9;
             button8.Text = "Вычитание";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button9
             // 
@@ -148,6 +151,7 @@
             button9.TabIndex = 10;
             button9.Text = "Умножение";
             button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // button10
             // 
@@ -157,6 +161,7 @@
             button10.TabIndex = 11;
             button10.Text = "Деление";
             button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
             // 
             // button11
             // 
@@ -198,11 +203,22 @@
             button14.UseVisualStyleBackColor = true;
             button14.Click += button5_Click;
             // 
+            // button15
+            // 
+            button15.Location = new Point(93, 202);
+            button15.Name = "button15";
+            button15.Size = new Size(75, 23);
+            button15.TabIndex = 16;
+            button15.Text = "Степень";
+            button15.UseVisualStyleBackColor = true;
+            button15.Click += button15_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button15);
             Controls.Add(button14);
             Controls.Add(button13);
             Controls.Add(button12);
@@ -245,5 +261,6 @@
         private Button button12;
         private Button button13;
         private Button button14;
+        private Button button15;
     }
 }

@@ -10,13 +10,13 @@ namespace kursa4
         {
             InitializeComponent();
         }
-        private void AddOperationButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             BracketsForm form = new BracketsForm();
             form.ShowDialog();
             Button clickedButton = sender as Button;
             string ind = clickedButton.Name[^1].ToString();
-            NewFormula formula = new NewFormula("1", elements, "1", "1", form.brackets());
+            NewFormula formula = new NewFormula("1", elements, form.brackets());
             formula.Chance();
             panel1.Invalidate();
         }
@@ -39,7 +39,7 @@ namespace kursa4
         {
             FractionForm form = new FractionForm();
             form.ShowDialog();
-            NewFormula formula = new NewFormula("2", elements, form.num(), form.denum(), "1");
+            NewFormula formula = new NewFormula("2", elements, form.num(), form.denum());
             formula.Chance();
             panel1.Invalidate();
         }
@@ -76,6 +76,51 @@ namespace kursa4
                 elements.Add(new TextElement("-"));
             else if (ind == "2")
                 elements.Add(new TextElement("*"));
+            panel1.Invalidate();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdditionForm form = new AdditionForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("3", elements, form.num(), form.denum());
+            formula.Chance();
+            panel1.Invalidate();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            SubtractionForm form = new SubtractionForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("5", elements, form.num(), form.denum());
+            formula.Chance();
+            panel1.Invalidate();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            DivisionForm form = new DivisionForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("4", elements, form.num(), form.denum());
+            formula.Chance();
+            panel1.Invalidate();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            MultiplicationForm form = new MultiplicationForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("6", elements, form.num(), form.denum());
+            formula.Chance();
+            panel1.Invalidate();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            ExponentiationForm form = new ExponentiationForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("7", elements, form.num(), form.denum());
+            formula.Chance();
             panel1.Invalidate();
         }
     }
