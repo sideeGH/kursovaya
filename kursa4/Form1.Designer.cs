@@ -45,6 +45,9 @@
             button13 = new Button();
             button14 = new Button();
             button15 = new Button();
+            button16 = new Button();
+            button17 = new Button();
+            button18 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -213,11 +216,44 @@
             button15.UseVisualStyleBackColor = true;
             button15.Click += button15_Click;
             // 
+            // button16
+            // 
+            button16.Location = new Point(12, 351);
+            button16.Name = "button16";
+            button16.Size = new Size(80, 24);
+            button16.TabIndex = 17;
+            button16.Text = "Функции";
+            button16.UseVisualStyleBackColor = true;
+            button16.Click += button16_Click;
+            // 
+            // button17
+            // 
+            button17.Location = new Point(498, 129);
+            button17.Name = "button17";
+            button17.Size = new Size(84, 36);
+            button17.TabIndex = 18;
+            button17.Text = "Удалить все";
+            button17.UseVisualStyleBackColor = true;
+            button17.Click += button17_Click;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(12, 381);
+            button18.Name = "button18";
+            button18.Size = new Size(80, 23);
+            button18.TabIndex = 19;
+            button18.Text = "Корень";
+            button18.UseVisualStyleBackColor = true;
+            button18.Click += button18_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button18);
+            Controls.Add(button17);
+            Controls.Add(button16);
             Controls.Add(button15);
             Controls.Add(button14);
             Controls.Add(button13);
@@ -262,5 +298,8 @@
         private Button button13;
         private Button button14;
         private Button button15;
+        private Button button16;
+        private Button button17;
+        private Button button18;
     }
 }

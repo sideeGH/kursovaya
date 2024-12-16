@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="SqrtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MultiplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>

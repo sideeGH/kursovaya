@@ -123,5 +123,29 @@ namespace kursa4
             formula.Chance();
             panel1.Invalidate();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            FunctionForm form = new FunctionForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("8", elements, form.num());
+            formula.Chance();
+            panel1.Invalidate();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            elements.Clear();
+            panel1.Invalidate();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            SqrtForm form = new SqrtForm();
+            form.ShowDialog();
+            NewFormula formula = new NewFormula("10", elements, form.num(),form.denum());
+            formula.Chance();
+            panel1.Invalidate();
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace kursa4
         private Subtraction sub;
         private Multiplication mul;
         private Exponentiation exp;
+        private Function func;
+        private Sqrt sqrt;
         public string up, down;
         public event buttonEventHandler buttonEvent;
         List<IFormulaElement> el;
@@ -51,6 +53,10 @@ namespace kursa4
                     exp = new Exponentiation(this, up, down);
                     exp.On();
                     break;
+                case "10":
+                    sqrt = new Sqrt(this, up, down);
+                    sqrt.On();
+                    break;
                 default:
                     break;
             }
@@ -63,6 +69,10 @@ namespace kursa4
                 case "1":
                     brack = new Brackets(this, text);
                     brack.On();
+                    break;
+                case "8":
+                    func = new Function(this, text);
+                    func.On();
                     break;
                 default:
                     break;
