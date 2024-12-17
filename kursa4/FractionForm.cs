@@ -22,9 +22,22 @@ namespace kursa4
         string up, down;
         private void button1_Click(object sender, EventArgs e)
         {
-            up = textBox1.Text;
-            down = textBox2.Text;
-            this.Close();
+            try
+            {
+                up = textBox1.Text;
+                down = textBox2.Text;
+                if(up == "" || down == "")
+                {
+                    throw new WarningException();
+                }
+                this.Close();
+            }
+            catch(WarningException)
+            {
+                MessageBox.Show("Ошибка. Не введено два значения");
+                up = null;
+                down = null;
+            }
         }
         public string num()
         {

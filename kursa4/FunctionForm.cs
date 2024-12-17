@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace kursa4
 {
@@ -21,52 +22,67 @@ namespace kursa4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            text = textBox1.Text;
-            this.Close();
+            try
+            {
+                text = textBox1.Text;
+                if (text == "")
+                {
+                    throw new WarningException();
+                }
+                this.Close();
+            }
+            catch (WarningException)
+            {
+                text = null;
+                MessageBox.Show("Ошибка. Не введено значение");
+            }
         }
         public string num()
         {
-            if (radioButton2.Checked)
+            if (text != null)
             {
-                return $"log({text})";
+                if (radioButton2.Checked)
+                {
+                    return $"log({text})";
+                }
+                else if (radioButton3.Checked)
+                {
+                    return $"ln({text})";
+                }
+                else if (radioButton4.Checked)
+                {
+                    return $"sin({text})";
+                }
+                else if (radioButton5.Checked)
+                {
+                    return $"cos({text})";
+                }
+                else if (radioButton6.Checked)
+                {
+                    return $"tg({text})";
+                }
+                else if (radioButton7.Checked)
+                {
+                    return $"ctg({text})";
+                }
+                else if (radioButton8.Checked)
+                {
+                    return $"arcsin({text})";
+                }
+                else if (radioButton9.Checked)
+                {
+                    return $"arccos({text})";
+                }
+                else if (radioButton10.Checked)
+                {
+                    return $"arctg({text})";
+                }
+                else if (radioButton11.Checked)
+                {
+                    return $"arcctg({text})";
+                }
             }
-            else if(radioButton3.Checked)
-            {
-                return $"ln({text})";
-            }
-            else if (radioButton4.Checked)
-            {
-                return $"sin({text})";
-            }
-            else if (radioButton5.Checked)
-            {
-                return $"cos({text})";
-            }
-            else if (radioButton6.Checked)
-            {
-                return $"tg({text})";
-            }
-            else if (radioButton7.Checked)
-            {
-                return $"ctg({text})";
-            }
-            else if (radioButton8.Checked)
-            {
-                return $"arcsin({text})";
-            }
-            else if (radioButton9.Checked)
-            {
-                return $"arccos({text})";
-            }
-            else if (radioButton10.Checked)
-            {
-                return $"arctg({text})";
-            }
-            else if (radioButton11.Checked)
-            {
-                return $"arcctg({text})";
-            }
-            return "0";
+            return null;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace kursa4
                 x += 6;
             }
             g.DrawString(")", SystemFonts.DefaultFont, Brushes.Black, x, y);
-            x += 3;
+            x += 4;
             foreach (char c in exp)
             {
                 g.DrawString(c.ToString(), SystemFonts.DefaultFont, Brushes.Black, x, y-5);

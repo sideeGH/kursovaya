@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,22 @@ namespace kursa4
         string text, exp;
         private void button1_Click(object sender, EventArgs e)
         {
-            text = textBox1.Text;
-            exp = textBox2.Text;
-            this.Close();
+            try
+            {
+                text = textBox1.Text;
+                exp = textBox2.Text;
+                if (text == "" || exp == "")
+                {
+                    throw new WarningException();
+                }
+                this.Close();
+            }
+            catch (WarningException)
+            {
+                text = null;
+                exp = null;
+                MessageBox.Show("Ошибка. Не введено два значения");
+            }
         }
         public string num()
         {

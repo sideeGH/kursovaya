@@ -19,9 +19,22 @@ namespace kursa4
         string first,second;
         private void button1_Click(object sender, EventArgs e)
         {
-            first = textBox1.Text;
-            second = textBox2.Text;
-            this.Close();
+            try
+            {
+                first = textBox1.Text;
+                second = textBox2.Text;
+                if (first == "" || second == "")
+                {
+                    throw new WarningException();
+                }
+                this.Close();
+            }
+            catch (WarningException)
+            {
+                first = null;
+                second = null;
+                MessageBox.Show("Ошибка. Не введено два значения");
+            }
         }
         public string num()
         {

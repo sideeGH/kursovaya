@@ -11,7 +11,6 @@ namespace kursa4
         string text, step;
         NewFormula forma;
         public SizeF u, d;
-        float length;
         public Sqrt(NewFormula form, string Text, string Step) : base(form)
         {
             text = Text;
@@ -25,13 +24,23 @@ namespace kursa4
         {
             u = g.MeasureString(step, SystemFonts.DefaultFont);
             d = g.MeasureString(text, SystemFonts.DefaultFont);
-            length = Math.Max(u.Width, d.Width);
-            float numx = x + (length - u.Width) / 2;
-            float denomx = x + (length - d.Width) / 2;
-            g.DrawString(Numerator.ToString(), SystemFonts.DefaultFont, Brushes.Black, numx + 2, y - 10);
-            g.DrawLine(Pens.Black, x + 5, y + 6, x + length, y + 6);
-            g.DrawString(Denominator.ToString(), SystemFonts.DefaultFont, Brushes.Black, denomx + 3, y + 10);
-            x += length + 2;
+            float rootWidth = d.Width + (string.IsNullOrEmpty(step) ? 10 : u.Width + 5) + 10;
+            float rootHeight = d.Height + 2;
+            x += u.Width /2 -15;
+            if (!string.IsNullOrEmpty(step))
+            {
+                g.DrawString(step, SystemFonts.DefaultFont, Brushes.Black, x, y - u.Height / 2 -2);
+                x += u.Width - 15;
+            }
+
+            g.DrawLine(Pens.Black, x+4, y + rootHeight / 2 -5, x + 8, y + 12);
+            g.DrawLine(Pens.Black, x + 9, y + 12, x + 16, y-2);
+
+            g.DrawLine(Pens.Black, x + 17, y-2, x + 10 + d.Width + 5, y-2);
+
+            g.DrawString(text, SystemFonts.DefaultFont, Brushes.Black, x + 15, y);
+
+            x += 42;
         }
     }
 }
