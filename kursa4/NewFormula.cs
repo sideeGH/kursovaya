@@ -11,7 +11,6 @@ namespace kursa4
     internal delegate void buttonEventHandler(object sender, buttonEventArgs e);
     internal class NewFormula
     {
-        public int buttonInd;
         private Brackets brack;
         private Fraction fr;
         private Addition ad;
@@ -21,7 +20,7 @@ namespace kursa4
         private Exponentiation exp;
         private Function func;
         private Sqrt sqrt;
-        public string up, down;
+        private Sum sum;
         public event buttonEventHandler buttonEvent;
         List<IFormulaElement> el;
         public NewFormula(string buttonInd, List<IFormulaElement> element,string up,string down)
@@ -77,6 +76,13 @@ namespace kursa4
                 default:
                     break;
             }
+        }
+        public NewFormula(List<IFormulaElement> element, string up, string i,string text)
+        {
+            el = element;
+            sum = new Sum(this, text, up, i);
+            sum.On();
+            
         }
         protected virtual void Onformula(buttonEventArgs e)
         {

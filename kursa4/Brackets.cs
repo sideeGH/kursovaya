@@ -15,18 +15,12 @@ namespace kursa4
         }
         public override void Draw(object sender, buttonEventArgs e)
         {
-            try
-            {
-                e.el.Add(new TextElement("("));
+            e.el.Add(new TextElement("("));
                 foreach (char c in bracket)
                 {
                     e.el.Add(new TextElement(c.ToString()));
                 }
                 e.el.Add(new TextElement(")"));
-            }
-            catch (NullReferenceException)
-            {
-            }
         }
     }
 }

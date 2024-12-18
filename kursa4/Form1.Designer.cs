@@ -48,6 +48,9 @@
             button16 = new Button();
             button17 = new Button();
             button18 = new Button();
+            button19 = new Button();
+            button20 = new Button();
+            button21 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -218,7 +221,7 @@
             // 
             // button16
             // 
-            button16.Location = new Point(12, 351);
+            button16.Location = new Point(336, 171);
             button16.Name = "button16";
             button16.Size = new Size(80, 24);
             button16.TabIndex = 17;
@@ -238,7 +241,7 @@
             // 
             // button18
             // 
-            button18.Location = new Point(12, 381);
+            button18.Location = new Point(336, 201);
             button18.Name = "button18";
             button18.Size = new Size(80, 23);
             button18.TabIndex = 19;
@@ -246,11 +249,44 @@
             button18.UseVisualStyleBackColor = true;
             button18.Click += button18_Click;
             // 
+            // button19
+            // 
+            button19.Location = new Point(100, 231);
+            button19.Name = "button19";
+            button19.Size = new Size(48, 23);
+            button19.TabIndex = 20;
+            button19.Text = "α";
+            button19.UseVisualStyleBackColor = true;
+            button19.Click += button5_Click;
+            // 
+            // button20
+            // 
+            button20.Location = new Point(154, 231);
+            button20.Name = "button20";
+            button20.Size = new Size(48, 23);
+            button20.TabIndex = 21;
+            button20.Text = "β";
+            button20.UseVisualStyleBackColor = true;
+            button20.Click += button5_Click;
+            // 
+            // button21
+            // 
+            button21.Location = new Point(208, 231);
+            button21.Name = "button21";
+            button21.Size = new Size(53, 23);
+            button21.TabIndex = 22;
+            button21.Text = "Σ";
+            button21.UseVisualStyleBackColor = true;
+            button21.Click += button21_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button21);
+            Controls.Add(button20);
+            Controls.Add(button19);
             Controls.Add(button18);
             Controls.Add(button17);
             Controls.Add(button16);
@@ -301,5 +337,8 @@
         private Button button16;
         private Button button17;
         private Button button18;
+        private Button button19;
+        private Button button20;
+        private Button button21;
     }
 }

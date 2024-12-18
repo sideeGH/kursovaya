@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace kursa4
@@ -12,8 +12,8 @@ namespace kursa4
         }
         private void button1_Click(object sender, EventArgs e)
         {
-                BracketsForm form = new BracketsForm();
-                form.ShowDialog();
+            BracketsForm form = new BracketsForm();
+            form.ShowDialog();
             if (form.brackets() != null)
             {
                 NewFormula formula = new NewFormula("1", elements, form.brackets());
@@ -24,11 +24,22 @@ namespace kursa4
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
+            try
+            {
                 float x = 10, y = 50;
                 foreach (var element in elements)
                 {
+                    if (x > 750)
+                        throw new WarningException();
                     element.Paint(e.Graphics, ref x, y);
                 }
+            }
+            catch (WarningException)
+            {
+                MessageBox.Show("Формула слишком большая");
+                elements.Clear();
+                panel1.Invalidate();
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -40,8 +51,8 @@ namespace kursa4
         {
             FractionForm form = new FractionForm();
             form.ShowDialog();
-                if (form.num() != null)
-                { 
+            if (form.num() != null)
+            {
                 NewFormula formula = new NewFormula("2", elements, form.num(), form.denum());
                 formula.Chance();
                 panel1.Invalidate();
@@ -65,7 +76,7 @@ namespace kursa4
                 elements.RemoveAt(elements.Count - 1);
                 panel1.Invalidate();
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
             }
         }
@@ -86,6 +97,10 @@ namespace kursa4
                 elements.Add(new TextElement("-"));
             else if (ind == "2")
                 elements.Add(new TextElement("*"));
+            else if (ind == "9")
+                elements.Add(new TextElement("α"));
+            else if (ind == "0")
+                elements.Add(new TextElement("β"));
             panel1.Invalidate();
         }
 
@@ -173,6 +188,23 @@ namespace kursa4
             if (form.num() != null)
             {
                 NewFormula formula = new NewFormula("10", elements, form.num(), form.denum());
+                formula.Chance();
+                panel1.Invalidate();
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            SumForm form = new SumForm();
+            form.ShowDialog();
+            if (form.num() != null)
+            {
+                NewFormula formula = new NewFormula(elements, form.num(), form.denum(), form.ednum());
                 formula.Chance();
                 panel1.Invalidate();
             }
